@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public float speed = 17;
+    //public float speed = 17;
 
 
-    Vector3 rotationRight = new Vector3(0, 60, 0);
-    Vector3 rotationLeft = new Vector3(0, -60, 0);
+
     [SerializeField] private GameObject rearCamera;
     [SerializeField] private GameObject frontCamera;
-
-    Vector3 forward = new Vector3(0, 0, 1);
-    Vector3 backward = new Vector3(0, 0, -1);
 
 
     private float horizontalInput;
@@ -29,38 +25,6 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey("w"))
-        {
-            transform.Translate(forward * speed * Time.deltaTime);
-            if (Input.GetKey("d"))
-            {
-                Quaternion deltaRotationRight = Quaternion.Euler(rotationRight * Time.deltaTime);
-                gameObject.GetComponent<Rigidbody>().MoveRotation(gameObject.GetComponent<Rigidbody>().rotation * deltaRotationRight);
-            }
-
-            if (Input.GetKey("a"))
-            {
-                Quaternion deltaRotationLeft = Quaternion.Euler(rotationLeft * Time.deltaTime);
-                gameObject.GetComponent<Rigidbody>().MoveRotation(gameObject.GetComponent<Rigidbody>().rotation * deltaRotationLeft);
-            }
-        }
-        if (Input.GetKey("s"))
-        {
-            transform.Translate(backward * speed * Time.deltaTime);
-            if (Input.GetKey("d"))
-            {
-                Quaternion deltaRotationRight = Quaternion.Euler(rotationRight * Time.deltaTime);
-                gameObject.GetComponent<Rigidbody>().MoveRotation(gameObject.GetComponent<Rigidbody>().rotation * deltaRotationRight);
-            }
-
-            if (Input.GetKey("a"))
-            {
-                Quaternion deltaRotationLeft = Quaternion.Euler(rotationLeft * Time.deltaTime);
-                gameObject.GetComponent<Rigidbody>().MoveRotation(gameObject.GetComponent<Rigidbody>().rotation * deltaRotationLeft);
-            }
-        }
-
-
         if (Input.GetKey("e"))
         {
             frontCamera.SetActive(false);
@@ -73,7 +37,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-        public void GetInput()
+    public void GetInput()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
