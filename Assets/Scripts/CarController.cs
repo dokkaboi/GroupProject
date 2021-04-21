@@ -23,6 +23,12 @@ public class CarController : MonoBehaviour
     public float maxSteerAngle = 30;
     public float motorForce = 50;
 
+    private void Start()
+    {
+        if (!frontCamera)
+            frontCamera = GameObject.FindGameObjectWithTag("MainCamera");
+    }
+
     void Update()
     {
         if (Input.GetKey("e"))
